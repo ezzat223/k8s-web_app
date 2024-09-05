@@ -1,26 +1,33 @@
 apiVersion: apps/v1 
 kind: Deployment
 
+# resource name
 metadata:
   name: comingsoon-page-img-deployment 
   namespace: comingsoon
 
 
+# defines the desired state of the deployment.
 spec:
+  # which pods are managed by this deployment.
   selector:
     matchLabels:
       app: comingsoon-page
   
+  # number of Pods to be created
   replicas: 4
 
+  # pod template (how the actual pod should look).
   template:
     metadata:
+      # labels to attach to created Pods
       labels:
         app: comingsoon-page
     
+    # scontainers running in the pod.
     spec:
       containers:
       - name: comingsoon-page
-        image: triple3a/comingsoon-page:latest
+        image: ezzat22/comingsoon-page:latest
         ports:
         - containerPort: 80
